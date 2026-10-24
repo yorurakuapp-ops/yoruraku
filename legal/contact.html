@@ -39,9 +39,12 @@ footer a{margin:0 9px;display:inline-block}
     <input id="name" autocomplete="name">
     <label for="mail">ご返信用のメールアドレス</label>
     <input id="mail" type="email" autocomplete="email" placeholder="example@mail.com">
-    <label for="inv">領収書の請求書番号（復元・返金のご相談のとき）</label>
+    <p class="tip" style="margin-top:22px"><b>復元・返金のご相談のときは、次の2つが必須です。</b>同じ決済（同じ領収書）の情報を、入れてください。</p>
+    <label for="pm">決済のときに入力したメールアドレス</label>
+    <input id="pm" type="email" autocomplete="off" placeholder="example@mail.com">
+    <label for="inv">その決済の領収書に書かれている請求書番号（または領収書番号）</label>
     <input id="inv" autocomplete="off" placeholder="例：ABCD1234-0001">
-    <p class="note">復元・返金のご相談には、<b>以前の決済のときに入力したメールアドレス</b>を上の「ご返信用のメールアドレス」に入れ、Stripeから届いた領収書に書かれている<b>請求書番号（または領収書番号）</b>を、ここに入れてください。</p>
+    <p class="note">どちらも、Stripeから届いた領収書メールで確認できます。上の「ご返信用のメールアドレス」は、ご返信を受け取るアドレスです（同じでもかまいません）。</p>
     <label for="msg">お問い合わせ内容</label>
     <textarea id="msg"></textarea>
     <input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -71,7 +74,8 @@ f.addEventListener("submit",function(e){
   var v=function(i){return document.getElementById(i).value.trim()};
   if(v("hp")) return;
   if(!v("msg")||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("mail"))){ng.textContent="メールアドレスと、お問い合わせ内容を入力してください。";ng.style.display="block";return;}
-  var text="【種類】"+v("kind")+"\n【お名前】"+v("name")+"\n【返信先】"+v("mail")+(v("inv")?"\n【請求書番号】"+v("inv"):"")+"\n\n"+v("msg");
+  if(/復元|返金/.test(v("kind"))&&(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("pm"))||!v("inv"))){ng.textContent="復元・返金のご相談では、決済のときに入力したメールアドレスと、その領収書の請求書番号の、両方を入力してください。";ng.style.display="block";return;}
+  var text="【種類】"+v("kind")+"\n【お名前】"+v("name")+"\n【返信先】"+v("mail")+(v("pm")?"\n【決済時のメールアドレス】"+v("pm"):"")+(v("inv")?"\n【請求書番号】"+v("inv"):"")+"\n\n"+v("msg");
   if(!(EMAILJS.SERVICE_ID&&EMAILJS.TEMPLATE_ID&&EMAILJS.PUBLIC_KEY)){
     location.href="mailto:"+FALLBACK_MAIL+"?subject="+encodeURIComponent("【夜ラク】"+v("kind"))+"&body="+encodeURIComponent(text);return;
   }
