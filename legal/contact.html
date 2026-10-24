@@ -21,6 +21,9 @@ button:disabled{opacity:.6}
 .ok,.ng{display:none;margin-top:16px;padding:14px;border-radius:12px;font-weight:700;font-size:14.5px}
 .ok{background:#FFEBDC}.ng{background:#fff;border:1.5px solid var(--orange)}
 .hp{position:absolute;left:-9999px}
+.tip{background:#FFEBDC;border-radius:14px;padding:12px 16px;margin-top:16px;font-size:14.5px}
+footer{margin-top:36px;text-align:center;font-size:13px}
+footer a{margin:0 9px;display:inline-block}
 </style>
 </head>
 <body>
@@ -28,22 +31,34 @@ button:disabled{opacity:.6}
   <a href="../index.html">← 夜ラクに戻る</a>
   <h1 style="margin-top:14px">お問い合わせ</h1>
   <p class="note">アプリの使い方、ご契約・解約、不具合のご連絡などはこちらから。内容を確認して、メールでご返信します（通常、数日以内）。</p>
+  <p class="tip">先に<a href="question.html">よくある質問</a>をご覧ください。解約のしかた、領収書、LINEアカウントを変えたときの復元などの手順を載せています。</p>
   <form class="card" id="f" novalidate>
     <label for="kind">種類</label>
-    <select id="kind"><option>アプリの使い方</option><option>ご契約・お支払い・解約</option><option>不具合のご連絡</option><option>ご意見・ご要望</option><option>その他</option></select>
+    <select id="kind"><option>アプリの使い方</option><option>ご契約・お支払い・解約</option><option>アカウントの復元（LINEアカウントを変更した）</option><option>返金のご相談</option><option>不具合のご連絡</option><option>ご意見・ご要望</option><option>その他</option></select>
     <label for="name">お名前（ニックネームでOK）</label>
     <input id="name" autocomplete="name">
     <label for="mail">ご返信用のメールアドレス</label>
     <input id="mail" type="email" autocomplete="email" placeholder="example@mail.com">
+    <label for="inv">領収書の請求書番号（復元・返金のご相談のとき）</label>
+    <input id="inv" autocomplete="off" placeholder="例：ABCD1234-0001">
+    <p class="note">復元・返金のご相談には、<b>以前の決済のときに入力したメールアドレス</b>を上の「ご返信用のメールアドレス」に入れ、Stripeから届いた領収書に書かれている<b>請求書番号（または領収書番号）</b>を、ここに入れてください。</p>
     <label for="msg">お問い合わせ内容</label>
     <textarea id="msg"></textarea>
     <input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="note">クレジットカード番号や、パスワードは、書かないでください。</p>
     <p class="note">不具合のご連絡は、お使いの機種（iPhone／Android）と、起きたときの状況を書いていただけると助かります。</p>
     <button type="submit" id="btn">送信する</button>
     <div class="ok" id="ok">送信しました。ご連絡ありがとうございます。</div>
     <div class="ng" id="ng"></div>
   </form>
   <p class="note" style="margin-top:20px">いただいた内容は、お問い合わせへの対応のためだけに使います。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</p>
+  <footer>
+    <a href="../index.html">トップ</a>
+    <a href="tokushoho.html">特定商取引法に基づく表記</a>
+    <a href="terms.html">利用規約</a>
+    <a href="question.html">よくある質問</a>
+    <a href="privacy.html">プライバシーポリシー</a>
+  </footer>
 </div>
 <script>
 // EmailJS（アプリの設定と同じ3つの値）。公開されても困らない値だけを入れます。
@@ -56,7 +71,7 @@ f.addEventListener("submit",function(e){
   var v=function(i){return document.getElementById(i).value.trim()};
   if(v("hp")) return;
   if(!v("msg")||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v("mail"))){ng.textContent="メールアドレスと、お問い合わせ内容を入力してください。";ng.style.display="block";return;}
-  var text="【種類】"+v("kind")+"\n【お名前】"+v("name")+"\n【返信先】"+v("mail")+"\n\n"+v("msg");
+  var text="【種類】"+v("kind")+"\n【お名前】"+v("name")+"\n【返信先】"+v("mail")+(v("inv")?"\n【請求書番号】"+v("inv"):"")+"\n\n"+v("msg");
   if(!(EMAILJS.SERVICE_ID&&EMAILJS.TEMPLATE_ID&&EMAILJS.PUBLIC_KEY)){
     location.href="mailto:"+FALLBACK_MAIL+"?subject="+encodeURIComponent("【夜ラク】"+v("kind"))+"&body="+encodeURIComponent(text);return;
   }
