@@ -65,7 +65,7 @@ f.addEventListener("submit",function(e){
     body:JSON.stringify({service_id:EMAILJS.SERVICE_ID,template_id:EMAILJS.TEMPLATE_ID,user_id:EMAILJS.PUBLIC_KEY,
       template_params:{app_name:"夜ラク（お問い合わせフォーム）",message:text,from_name:v("name"),reply_to:v("mail"),kind:v("kind")}})})
   .then(function(r){if(!r.ok){return r.text().then(function(t){throw new Error(r.status+" "+t)})}ok.style.display="block";f.reset();})
-  .catch(function(e){try{console.error("EmailJS",e)}catch(_){}ng.textContent="送信できませんでした。お手数ですが、時間をおいてもう一度お試しください。"+(location.protocol==="file:"?"（このファイルをパソコンで直接開いている場合は、公開したURLからお試しください）":"");ng.style.display="block";})
+  .catch(function(e){try{console.error("EmailJS",e)}catch(_){}ng.textContent="送信できませんでした。お手数ですが、時間をおいてもう一度お試しください。"+(e&&e.message?"（"+String(e.message).replace(/\s+/g," ").slice(0,160)+"）":"")+(location.protocol==="file:"?"（このファイルをパソコンで直接開いている場合は、公開したURLからお試しください）":"");ng.style.display="block";})
   .then(function(){btn.disabled=false;});
 });
 </script>
