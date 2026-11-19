@@ -223,7 +223,7 @@ footer .dis{max-width:760px;font-size:12px;line-height:1.8;color:#B9A593}
 .cmp tr:last-child th,.cmp tr:last-child td{border-bottom:0}
 
 /* ---- v3 ---- */
-.hero h1{font-size:clamp(34px,7vw,58px);margin:18px 0 12px}
+.hero h1{font-size:clamp(30px,6.4vw,48px);margin:18px 0 12px}
 .hero .sub{font-size:clamp(17px,2.6vw,20px);font-weight:700}
 .heroill{border:0!important;border-radius:28px;aspect-ratio:480/380;background:none}
 .heroill svg{width:100%;height:100%;display:block}
@@ -283,6 +283,13 @@ footer .dis{max-width:760px;font-size:12px;line-height:1.8;color:#B9A593}
 .scale .me b{color:var(--orange-d)}
 .scale span{display:block;font-size:14px;color:var(--muted);line-height:1.7;margin-top:6px}
 @media(max-width:600px){.scale{grid-template-columns:1fr}}
+.vid{background:#fff;padding:56px 0 48px}
+.vbox{position:relative;max-width:340px;margin:26px auto 0;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 10px 30px rgba(58,42,31,.18)}
+.vbox iframe,.vbox .vplay{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vplay{padding:0;cursor:pointer;background:none;display:block}
+.vplay img{width:100%;height:100%;object-fit:cover;display:block}
+.vplay .pbtn{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--orange);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;padding-left:6px;box-shadow:0 4px 0 var(--orange-d)}
+.vnote{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px}
 </style>
 <script>
 /* 画像の読み込み：images/名前.jpeg が無ければ、拡張子違い（.png/.jpg/.webp、二重拡張子、全角の数字）や別の場所も順に試します */
@@ -326,7 +333,7 @@ function imgFb(el){
 <div class="wrap">
 <div>
 <span class="kicker">LINEの夕食献立アプリ「夜ラク」</span>
-<h1><b>3ステップで、<br>栄養まで揃う夕食。</b></h1>
+<h1><b>3ステップで、<br><span style="white-space:nowrap">栄養まで揃う夕食。</span></b></h1>
 <p class="sub">いつもの食材と調味料で。<br>人数とコースを決めれば、毎日の献立がそのまま届きます。</p>
 <div class="cta">
 <a class="btn" href="https://liff.line.me/2011955797-fkQ9BNji" data-line="free"><span>LINEで無料ではじめる<small>基本の機能は、無料版から使えます</small></span></a>
@@ -335,6 +342,13 @@ function imgFb(el){
 </div>
 <div class="ph has heroill"><img src="image/hero_photo.png?v=3" data-n="hero_photo" onerror="imgFb(this)" alt="餃子・ごはん・味噌汁・小鉢2品が並んだ夕食" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block">
 </div>
+</div>
+</section>
+<section class="vid">
+<div class="wrap">
+<div class="title"><h2>約1分で分かる、夜ラク</h2></div>
+<div class="vbox" id="vbox"><button type="button" class="vplay" id="vplay" aria-label="紹介動画を再生する"><img src="image/video_poster.jpg" alt="夜ラクの紹介動画" loading="lazy" width="540" height="960"><span class="pbtn" aria-hidden="true">▶</span></button></div>
+<p class="vnote">再生すると、YouTubeに接続します。</p>
 </div>
 </section>
 <section class="worry">
@@ -576,6 +590,9 @@ document.querySelectorAll("[data-line]").forEach(function (a) {
   var u = a.getAttribute("data-line") === "premium" ? LINE_URL_PREMIUM : LINE_URL_FREE;
   if (u) a.href = u;
 });
+</script>
+<script>
+(function(){var b=document.getElementById('vplay');if(!b)return;b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/PAf_vXs6wk0?autoplay=1&rel=0&playsinline=1';f.title='夜ラク紹介動画';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;var box=document.getElementById('vbox');box.innerHTML='';box.appendChild(f);});})();
 </script>
 </body>
 </html>
