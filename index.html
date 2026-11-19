@@ -290,6 +290,10 @@ footer .dis{max-width:760px;font-size:12px;line-height:1.8;color:#B9A593}
 .vplay img{width:100%;height:100%;object-fit:cover;display:block}
 .vplay .pbtn{position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--orange);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;padding-left:6px;box-shadow:0 4px 0 var(--orange-d)}
 .vnote{text-align:center;font-size:12.5px;color:var(--muted);margin-top:12px}
+.sns{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sns a{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border:1.5px solid #F6EBDD;border-radius:999px;color:#F6EBDD;font-weight:800;font-size:14px;text-decoration:none}
+.sns a:hover{background:rgba(246,235,221,.12)}
+.sns small{font-size:12px;color:#B9A593}
 </style>
 <script>
 /* 画像の読み込み：images/名前.jpeg が無ければ、拡張子違い（.png/.jpg/.webp、二重拡張子、全角の数字）や別の場所も順に試します */
@@ -348,7 +352,7 @@ function imgFb(el){
 <div class="wrap">
 <div class="title"><h2>約1分で分かる、夜ラク</h2></div>
 <div class="vbox" id="vbox"><button type="button" class="vplay" id="vplay" aria-label="紹介動画を再生する"><img src="image/video_poster.jpg" alt="夜ラクの紹介動画" loading="lazy" width="540" height="960"><span class="pbtn" aria-hidden="true">▶</span></button></div>
-<p class="vnote">再生すると、YouTubeに接続します。</p>
+<p class="vnote">再生すると、YouTubeに接続します。<br>うまく再生できない場合は、<a href="https://www.youtube.com/shorts/PAf_vXs6wk0" target="_blank" rel="noopener">YouTubeで見る</a></p>
 </div>
 </section>
 <section class="worry">
@@ -566,6 +570,7 @@ function imgFb(el){
 <footer>
   <div class="wrap">
     <div class="logo" style="color:#fff">夜ラク</div>
+    <div class="sns"><a href="https://www.instagram.com/yoruraku.app/" target="_blank" rel="noopener">公式Instagram</a><small>実際につくった料理の写真が見られます</small></div>
     <nav>
       <a href="legal/tokushoho.html">特定商取引法に基づく表記</a>
       <a href="legal/terms.html">利用規約</a>
@@ -592,7 +597,7 @@ document.querySelectorAll("[data-line]").forEach(function (a) {
 });
 </script>
 <script>
-(function(){var b=document.getElementById('vplay');if(!b)return;b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/PAf_vXs6wk0?autoplay=1&rel=0&playsinline=1';f.title='夜ラク紹介動画';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;var box=document.getElementById('vbox');box.innerHTML='';box.appendChild(f);});})();
+(function(){var b=document.getElementById('vplay');if(!b)return;b.addEventListener('click',function(){var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/PAf_vXs6wk0?autoplay=1&rel=0&playsinline=1';f.title='夜ラク紹介動画';f.referrerPolicy='strict-origin-when-cross-origin';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;var box=document.getElementById('vbox');box.innerHTML='';box.appendChild(f);});})();
 </script>
 </body>
 </html>
