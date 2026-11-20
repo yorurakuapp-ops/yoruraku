@@ -5,31 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>お問い合わせ｜夜ラク</title>
 <style>
-:root{--orange:#CC4A0E;--orange-d:#A33A08;--cream:#FFF8F0;--brown:#3A2A1F;--muted:#7B6554;--line:#EEDFCF}
+:root{--bg:#FAF8F3;--white:#fff;--cream:#F3EEE5;--green:#314837;--ink:#2C2D27;--sub:#66695e;--orange:#BB5634;--line:#e5dfd3}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--brown);font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;line-height:1.85}
-.box{max-width:620px;margin:0 auto;padding:36px 20px 60px}
-a{color:var(--orange-d)}
-h1{font-size:26px;margin:0 0 6px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 22px;margin-top:20px}
-label{display:block;font-weight:800;font-size:14.5px;margin:16px 0 6px}
-input,select,textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid #DCC7B0;border-radius:12px;background:#fff;color:var(--brown)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:var(--green);text-underline-offset:4px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+h1,h2,p{margin:0}
+.wrap{width:min(820px,calc(100% - 44px));margin-inline:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(50,55,40,.08)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;width:min(1120px,calc(100% - 44px))}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:23px;font-weight:900;letter-spacing:.1em;color:var(--green)}
+.brandmark{display:grid;place-items:center;width:32px;height:32px;border-radius:50% 50% 42% 42%;background:var(--green);color:#fff;font-size:16px;font-weight:800;transform:rotate(-6deg)}
+.back{font-size:12px;font-weight:700;letter-spacing:.05em;text-decoration:none;color:var(--ink)}
+.back:hover{color:var(--orange)}
+main{padding:64px 0 96px}
+.doc{background:var(--white);border:1px solid var(--line);padding:56px 52px}
+.doc h1,.doc h2{font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-weight:600;letter-spacing:.05em}
+.doc h1{font-size:clamp(25px,4.4vw,34px);line-height:1.5;text-align:center}
+.doc h1::after{content:"";display:block;width:40px;height:2px;background:var(--orange);margin:18px auto 0}
+.lead{margin-top:30px}
+.doc h2{font-size:19px;line-height:1.5;margin:46px 0 14px;padding-left:13px;border-left:3px solid var(--orange)}
+.doc p + p{margin-top:10px}
+.doc ul,.doc ol{margin:0;padding-left:1.5em}
+.doc li + li{margin-top:6px}
+.date{margin-top:44px;text-align:right;color:var(--sub);font-size:13px}
+footer{background:#263629;color:#e3e7dd;padding:46px 0 52px}
+footer .wrap{width:min(1120px,calc(100% - 44px))}
+footer nav{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;margin-bottom:18px}
+footer a{color:#e3e7dd;font-size:12px;text-decoration:none;text-underline-offset:4px}
+footer a:hover{text-decoration:underline}
+.copy{text-align:center;font-size:11px;color:#c6d0c3}
+@media(max-width:600px){main{padding:28px 0 60px}.doc{padding:34px 20px}header .wrap{height:60px}.logo{font-size:21px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.box{width:min(640px,calc(100% - 40px));margin:0 auto;padding:56px 0 90px}
+.box h1{font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-weight:600;letter-spacing:.05em;font-size:clamp(25px,4.4vw,34px);margin:0 0 10px}
+.card{background:#fff;border:1px solid var(--line);padding:30px 26px;margin-top:22px}
+label{display:block;font-weight:800;font-size:14px;margin:18px 0 6px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1px solid #d9d0bd;border-radius:4px;background:#fff;color:var(--ink)}
 textarea{min-height:150px;resize:vertical}
-button{margin-top:22px;width:100%;border:0;border-radius:999px;background:var(--orange);color:#fff;font:inherit;font-weight:900;font-size:17px;padding:16px;box-shadow:0 5px 0 var(--orange-d);cursor:pointer}
+button{margin-top:24px;width:100%;border:1px solid var(--green);border-radius:4px;background:var(--green);color:#fff;font:inherit;font-weight:800;font-size:15px;letter-spacing:.03em;padding:17px;cursor:pointer;transition:background .2s}
+button:hover{background:#243b2d}
 button:disabled{opacity:.6}
-.note{font-size:12.5px;color:var(--muted);line-height:1.8}
-.ok,.ng{display:none;margin-top:16px;padding:14px;border-radius:12px;font-weight:700;font-size:14.5px}
-.ok{background:#FFEBDC}.ng{background:#fff;border:1.5px solid var(--orange)}
+.note{font-size:12.5px;color:var(--sub);line-height:1.8}
+.ok,.ng{display:none;margin-top:16px;padding:14px;font-weight:700;font-size:14.5px}
+.ok{background:#e7eadf;color:var(--green)}.ng{background:#fff;border:1.5px solid var(--orange)}
 .hp{position:absolute;left:-9999px}
-.tip{background:#FFEBDC;border-radius:14px;padding:12px 16px;margin-top:16px;font-size:14.5px}
-footer{margin-top:36px;text-align:center;font-size:13px}
-footer a{margin:0 9px;display:inline-block}
+.tip{background:var(--cream);padding:13px 17px;margin-top:16px;font-size:14px}
+@media(max-width:600px){.box{padding:30px 0 60px}.card{padding:24px 18px}}
 </style>
 </head>
 <body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="../index.html"><span class="brandmark" aria-hidden="true">夜</span>夜ラク</a>
+    <a class="back" href="../index.html">← トップへ戻る</a>
+  </div>
+</header>
+<main>
 <div class="box">
-  <a href="../index.html">← 夜ラクに戻る</a>
-  <h1 style="margin-top:14px">お問い合わせ</h1>
+  <h1>お問い合わせ</h1>
   <p class="note">アプリの使い方、ご契約・解約、不具合のご連絡などはこちらから。内容を確認して、メールでご返信します（通常、数日以内）。</p>
   <p class="tip">先に<a href="question.html">よくある質問</a>をご覧ください。解約のしかた、領収書、LINEアカウントを変えたときの復元などの手順を載せています。</p>
   <form class="card" id="f" novalidate>
@@ -39,7 +75,7 @@ footer a{margin:0 9px;display:inline-block}
     <input id="name" autocomplete="name">
     <label for="mail">ご返信用のメールアドレス</label>
     <input id="mail" type="email" autocomplete="email" placeholder="example@mail.com">
-    <p class="tip" style="margin-top:22px"><b>復元・返金のご相談のときは、次の2つが必須です。</b>同じ決済（同じ領収書）の情報を、入れてください。</p>
+    <p class="tip" style="margin-top:24px"><b>復元・返金のご相談のときは、次の2つが必須です。</b>同じ決済（同じ領収書）の情報を、入れてください。</p>
     <label for="pm">決済のときに入力したメールアドレス</label>
     <input id="pm" type="email" autocomplete="off" placeholder="example@mail.com">
     <label for="inv">その決済の領収書に書かれている請求書番号（または領収書番号）</label>
@@ -54,15 +90,15 @@ footer a{margin:0 9px;display:inline-block}
     <div class="ok" id="ok">送信しました。ご連絡ありがとうございます。</div>
     <div class="ng" id="ng"></div>
   </form>
-  <p class="note" style="margin-top:20px">いただいた内容は、お問い合わせへの対応のためだけに使います。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</p>
-  <footer>
-    <a href="../index.html">トップ</a>
-    <a href="tokushoho.html">特定商取引法に基づく表記</a>
-    <a href="terms.html">利用規約</a>
-    <a href="question.html">よくある質問</a>
-    <a href="privacy.html">プライバシーポリシー</a>
-  </footer>
+  <p class="note" style="margin-top:22px">いただいた内容は、お問い合わせへの対応のためだけに使います。詳しくは<a href="privacy.html">プライバシーポリシー</a>をご確認ください。</p>
 </div>
+</main>
+<footer>
+  <div class="wrap">
+    <nav><a href="../index.html">トップ</a><a href="tokushoho.html">特定商取引法に基づく表記</a><a href="terms.html">利用規約</a><a href="question.html">よくある質問</a><a href="privacy.html">プライバシーポリシー</a></nav>
+    <div class="copy">© 2026 夜ラク</div>
+  </div>
+</footer>
 <script>
 // EmailJS（アプリの設定と同じ3つの値）。公開されても困らない値だけを入れます。
 var EMAILJS = { SERVICE_ID: "service_06phmx9", TEMPLATE_ID: "template_3v7mkvf", PUBLIC_KEY: "pTLrBYXSWuWomFQXF" };

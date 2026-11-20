@@ -6,57 +6,56 @@
 <title>よくある質問｜夜ラク</title>
 <meta name="description" content="夜ラクのよくある質問と、アカウント復元・解約の手順です。">
 <style>
-:root{
-  --brown:#3A2A1F; --soft:#FFF0E2;
-  --orange:#CC4A0E; --orange-d:#A33A08; --orange-l:#FFEBDC;
-  --cream:#FFF8F0; --ink:#3A2A1F; --muted:#7B6554; --line:#EEDFCF; --white:#fff;
-}
+:root{--bg:#FAF8F3;--white:#fff;--cream:#F3EEE5;--green:#314837;--ink:#2C2D27;--sub:#66695e;--orange:#BB5634;--line:#e5dfd3}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;line-height:1.85;-webkit-text-size-adjust:100%}
-a{color:var(--orange-d)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:var(--green);text-underline-offset:4px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
 h1,h2,p{margin:0}
-.wrap{max-width:820px;margin:0 auto;padding:0 22px}
-
-/* ヘッダー */
-header{background:#fff;border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{text-decoration:none;font-weight:900;font-size:22px;color:var(--brown);letter-spacing:.04em}
-.back{font-size:14px;font-weight:700;text-decoration:none}
-.back:hover{text-decoration:underline}
-
-/* 本文 */
-main{padding:56px 0 80px}
-.doc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:44px 40px}
-.doc h1{font-size:clamp(24px,4.6vw,32px);font-weight:900;line-height:1.5;text-align:center;letter-spacing:.03em}
-.doc h1::after{content:"";display:block;width:44px;height:4px;border-radius:2px;background:var(--orange);margin:16px auto 0}
-.lead{margin-top:28px}
-.doc h2{font-size:18px;font-weight:900;margin:40px 0 12px;padding-left:12px;border-left:4px solid var(--orange)}
-.doc p + p,.doc p + ol{margin-top:10px}
-.doc ol{margin:0;padding-left:1.6em}
+.wrap{width:min(820px,calc(100% - 44px));margin-inline:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(250,248,243,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(50,55,40,.08)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;width:min(1120px,calc(100% - 44px))}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:23px;font-weight:900;letter-spacing:.1em;color:var(--green)}
+.brandmark{display:grid;place-items:center;width:32px;height:32px;border-radius:50% 50% 42% 42%;background:var(--green);color:#fff;font-size:16px;font-weight:800;transform:rotate(-6deg)}
+.back{font-size:12px;font-weight:700;letter-spacing:.05em;text-decoration:none;color:var(--ink)}
+.back:hover{color:var(--orange)}
+main{padding:64px 0 96px}
+.doc{background:var(--white);border:1px solid var(--line);padding:56px 52px}
+.doc h1,.doc h2{font-family:'Yu Mincho','Hiragino Mincho ProN',serif;font-weight:600;letter-spacing:.05em}
+.doc h1{font-size:clamp(25px,4.4vw,34px);line-height:1.5;text-align:center}
+.doc h1::after{content:"";display:block;width:40px;height:2px;background:var(--orange);margin:18px auto 0}
+.lead{margin-top:30px}
+.doc h2{font-size:19px;line-height:1.5;margin:46px 0 14px;padding-left:13px;border-left:3px solid var(--orange)}
+.doc p + p{margin-top:10px}
+.doc ul,.doc ol{margin:0;padding-left:1.5em}
 .doc li + li{margin-top:6px}
-.date{margin-top:40px;text-align:right;color:var(--muted);font-size:14px}
-@media(max-width:600px){main{padding:28px 0 56px}.doc{padding:30px 20px;border-radius:16px}}
-
-/* フッター */
-footer{background:var(--brown);color:#fff;padding:32px 0;text-align:center;font-size:13px}
-footer nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-bottom:14px}
-footer a{color:#fff;text-decoration:none}
+.date{margin-top:44px;text-align:right;color:var(--sub);font-size:13px}
+footer{background:#263629;color:#e3e7dd;padding:46px 0 52px}
+footer .wrap{width:min(1120px,calc(100% - 44px))}
+footer nav{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:center;margin-bottom:18px}
+footer a{color:#e3e7dd;font-size:12px;text-decoration:none;text-underline-offset:4px}
 footer a:hover{text-decoration:underline}
-details{border-bottom:1px solid var(--line);padding:14px 0}
-summary{cursor:pointer;font-weight:800;list-style:none;padding-right:24px;position:relative}
+.copy{text-align:center;font-size:11px;color:#c6d0c3}
+@media(max-width:600px){main{padding:28px 0 60px}.doc{padding:34px 20px}header .wrap{height:60px}.logo{font-size:21px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.doc h2.q{margin-top:40px}
+details{border-bottom:1px solid #ded8ca;padding:0}
+summary{cursor:pointer;font-weight:800;font-size:15px;list-style:none;padding:20px 40px 20px 0;position:relative}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"＋";position:absolute;right:0;color:var(--orange)}
-details[open] summary::after{content:"－"}
-details p,details ol{margin-top:10px;font-size:15px}
+summary::after{content:'+';position:absolute;right:8px;top:14px;font-size:25px;color:var(--green);font-weight:400}
+details[open] summary::after{content:'−'}
+details p,details ol{margin-top:0;padding-bottom:16px;font-size:14.5px;color:var(--sub)}
 details ol{padding-left:1.6em}
-.doc h2.q{margin-top:36px}
+details p + p,details ol + p,details p + ol{margin-top:0}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="https://yorurakuapp-ops.github.io/yoruraku/">夜ラク</a>
+    <a class="logo" href="https://yorurakuapp-ops.github.io/yoruraku/"><span class="brandmark" aria-hidden="true">夜</span>夜ラク</a>
     <a class="back" href="https://yorurakuapp-ops.github.io/yoruraku/">← トップへ戻る</a>
   </div>
 </header>
@@ -75,7 +74,8 @@ details ol{padding-left:1.6em}
       <details><summary>解約すると、すぐに使えなくなりますか？</summary><p>いいえ。無料体験の最終日、または払い済みの契約期間の最終日までは、プレミアムのままご利用いただけます。その日を過ぎると、ライトプランになります。</p></details>
       <details><summary>アカウントを削除すると、どうなりますか？</summary><p>有料プランは直ちに解約され、契約期間が残っていても返金はありません。保存した設定・写真・メモなどのデータも削除され、元に戻せません。使い続ける場合は、削除ではなく「中止」を選んでください。</p></details>
       <details><summary>返金はできますか？</summary><p>デジタルサービスの性質上、課金後の返金は原則としていたしません。サービスに重大な不具合がある場合などは、決済のときに入力したメールアドレスと、領収書に記載の請求書番号（または領収書番号）を添えて、<a href="https://yorurakuapp-ops.github.io/yoruraku/legal/contact.html">お問い合わせ</a>からご連絡ください。</p></details>
-      <details><summary>領収書や、お支払い方法の確認はできますか？</summary><p>決済のたびに、決済時に入力したメールアドレスへ、Stripeから領収書が届きます。お支払い方法の確認は、アプリの「マイページ」→「会員情報」→「サブスクリプション管理」から行えます。</p></details>
+      <details><summary>領収書や、お支払い方法の確認はできますか？</summary><p>決済のたびに、決済時に入力したメールアドレスへ、Stripeから領収書が届きます。領収書や請求履歴の確認は、アプリの「マイページ」→「会員情報」→「サブスクリプション管理」→「お支払い方法・領収書の確認」から、Stripeの専用ページで行えます。</p></details>
+      <details><summary>クレジットカード（お支払い方法）を変更したいです</summary><p>アプリの「マイページ」→「会員情報」→「お支払方法の変更」を開き、「Stripeで変更する」を押してください。Stripeの安全な専用ページが開くので、そこでカードの変更・追加ができます（「サブスクリプション管理」の「お支払い方法・領収書の確認」からも同じページを開けます）。カード情報は夜ラクには保存されません。変更したカードは、次回の更新から使われます。アプリを開けないときは、お問い合わせからご連絡ください。</p></details>
       <h2 class="q">アカウント・ログイン</h2>
       <details><summary>機種変更をしました。データは引き継げますか？</summary><p>同じLINEアカウントでログインすれば、設定や保存した献立などは、そのまま引き継がれます。</p></details>
       <details><summary>LINEアカウントを変更しました。有料プランを引き継げますか？</summary><p>LINEアカウントが変わると、データは自動では引き継がれません。有料プランをご契約中の方は、次の手順で復元をお申し込みください。</p><ol><li>新しいLINEアカウントで、アプリに一度ログインします。</li><li><a href="https://yorurakuapp-ops.github.io/yoruraku/legal/contact.html">お問い合わせ</a>から、「復元希望」と書き、<b>決済のときに入力したメールアドレス</b>と、<b>その同じ決済の領収書に記載の請求書番号（または領収書番号）</b>の、2つをお知らせください。</li><li>メールアドレスと番号が、同じ決済のものと一致し、契約状況を確認できたら、契約とデータを新しいLINEアカウントへ移します。</li></ol><p>確認できない場合は、復元をお受けできません。無料プランのデータは、復元できません。</p></details>
@@ -99,7 +99,7 @@ details ol{padding-left:1.6em}
       <a href="https://yorurakuapp-ops.github.io/yoruraku/legal/privacy.html">プライバシーポリシー</a>
       <a href="contact.html">お問い合わせ</a>
     </nav>
-    <div>© 2026 夜ラク</div>
+    <div class="copy">© 2026 夜ラク</div>
   </div>
 </footer>
 
